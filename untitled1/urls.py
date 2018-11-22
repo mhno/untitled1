@@ -24,6 +24,7 @@ urlpatterns = [
     path('',views.index),
     path('signup/',views.sign_up),
     path('login/',views.sign_in),
+    path('contact_us/',views.contact_us)
     #url(r'^signup/$', core_views.signup, name='signup'),
 ]
 

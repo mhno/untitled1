@@ -36,7 +36,7 @@ def index(request):
 #     else:
 #         # Return an 'invalid login' error message.
 
-def signup(request):
+def sign_up(request):
     comments_list = User.objects.order_by('-created_at')
     if request.method == 'POST':
         form = SignUpForm(request.POST)
