@@ -1,4 +1,5 @@
 from django.contrib.auth.models import User
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
 from django.contrib.auth import login, authenticate
@@ -36,7 +37,23 @@ def index(request):
 #         ...
 #     else:
 #         # Return an 'invalid login' error message.
+def sign_in(request):
+    if request.POST:
+        username=request.POST.get("user-name")
+        password=request.POST.get("password")
 
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            if user.is_active:
+                login(request, user)
+                return HttpResponseRedirect("/")
+            else:
+                error = True
+        return render(request, "sign_in.html", {
+            "error": error
+        })
+
+   # return render(request,"sign_in.html")
 def sign_up(request):
     # if request.method == 'POST':
     #     error = False

@@ -23,7 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.index),
     path('signup2/',views.sign_up),
-   # path('login/',views.sign_in),
+    path('login/',views.sign_in),
     #path('contact_us/',views.contact_us)
     #url(r'^signup/$', core_views.signup, name='signup'),
 ]
