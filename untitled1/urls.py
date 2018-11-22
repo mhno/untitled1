@@ -18,8 +18,13 @@ from django.urls import path
 from django.conf.urls import url
 from edu import views as core_views
 from edu import views
+
 urlpatterns = [
-   # path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls),
     path('',views.index),
+    path('signup/',views.sign_up),
+    path('login/',views.sign_in),
     #url(r'^signup/$', core_views.signup, name='signup'),
 ]
+
+
