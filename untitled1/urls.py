@@ -19,7 +19,7 @@ from django.conf.urls import url
 from edu import views as core_views
 from edu import views
 urlpatterns = [
-    path('admin/', admin.site.urls),
+   # path('admin/', admin.site.urls),
     path('',views.index),
     #url(r'^signup/$', core_views.signup, name='signup'),
 ]
