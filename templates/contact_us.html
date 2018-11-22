@@ -10,20 +10,23 @@
 
 
 {% block content %}
+    <form class="ui form" autocomplete="off" method="post" action="/">
   <div class="ui form">
    <div class="field">
     <label>عنوان </label>
-    <input id="id_title" type="text" name="first-name" placeholder="First Name">
+    <input id="id_title" type="text" name="title" placeholder="First Name">
   </div>
   <div class="field">
     <label>ایمیل</label>
-    <input id="id_email" type="email" name="" placeholder="Last Name">
+    <input id="id_email" type="email" name="email" placeholder="Last Name">
   </div>
   <div class="field">
     <label>متن </label>
-
+      <input id="id_text" type="text" name="text" placeholder="Last Name">
   </div>
 </div>
+    <button id="id_submit" class="ui button" type="submit">Submit</button>
 
+    </form>
 {% endblock %}
 

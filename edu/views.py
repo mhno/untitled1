@@ -37,6 +37,13 @@ def index(request):
 #         ...
 #     else:
 #         # Return an 'invalid login' error message.
+def contact_us(request):
+    if request.POST:
+        title=request.POST.get("title")
+        email=request.POST.get("email")
+        text=request.POST.get("text")
+    return render(request,"contact_us.html")
+
 def sign_in(request):
     if request.POST:
         username=request.POST.get("user-name")
