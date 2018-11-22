@@ -21,6 +21,7 @@ from django.contrib.auth import logout
 #     return render(request, 'signup.html', {'form': form})
 from forms.user_forms import SignUpForm
 
+from django.contrib.auth.models import User
 
 def index(request):
     return render(request,"index.html")
@@ -37,24 +38,47 @@ def index(request):
 #         # Return an 'invalid login' error message.
 
 def sign_up(request):
-    comments_list = User.objects.order_by('-created_at')
-    if request.method == 'POST':
-        form = SignUpForm(request.POST)
-        print(form.data)
-        if form.is_valid():
-            user = form.save()
-            user_info = User()
-            user_info.user = user
-            user_info.is_active = True
-            user_info.save()
+    # if request.method == 'POST':
+    #     error = False
+        if request.POST:
+            name=request.POST.get("name")
+            lastname=request.POST.get("last_name")
+            username = request.POST.get("username")
+            email=request.POST.get("email")
+            password1 = request.POST.get("password1")
+            password2=request.POST.get("password2")
+
+            user = User.objects.create_user(username,email,password1)
+
+            user.first_name = name
+            user.last_name = lastname
             user.save()
 
+        return render(request,"sign_up.html")
+           # user = authenticate(request, username=username, password=password)
+        #     if user is not None:
+        #         if user.is_active:
+        #             login(request, user)
+        #             return HttpResponseRedirect("/")
+        #         else:
+        #             error = True
+        #     error = True
+        # return render(request, "login_form.html", {
+        #     "error": error
+        # })
 
-    else:
-        form = SignUpForm()
-    print(form.errors)
-    return render(request, 'sign_up.html', {'comments': comments_list,'form': form})
-
+    #     form = forms.user_forms.SignUpForm(request.POST)
+    #     if form.is_valid():
+    #         form.save()
+    #         username = form.cleaned_data.get('username')
+    #         raw_password = form.cleaned_data.get('password1')
+    #
+    #         user = authenticate(username=username, password=raw_password)
+    #         login(request, user)
+    #         return redirect('/')
+    # else:
+    #     form = SignUpForm()
+    # return render(request, 'sign_up.html', {'form': form})
 
 def logout_view(request):
     logout(request)

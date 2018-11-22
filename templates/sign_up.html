@@ -3,19 +3,19 @@
 
 {% block content %}
 
-<form class="ui form" autocomplete="off" method="post" action="index.html">
+<form class="ui form" autocomplete="off" method="post" action="#">
 {% csrf_token %}
   <div class="field">
     <label>نام </label>
-    <input id="id_first_name" type="text" name="first-name" placeholder="First Name">
+    <input id="id_first_name" type="text" name="name" placeholder="First Name">
   </div>
   <div class="field">
     <label>نام خانوادگی</label>
-    <input id="id_last_name" type="text" name="last-name" placeholder="Last Name">
+    <input id="id_last_name" type="text" name="last_name" placeholder="Last Name">
   </div>
      <div class="field">
     <label>نام  کاربری </label>
-    <input id="id_username" type="text" name="user-name" placeholder="User Name">
+    <input id="id_username" type="text" name="username" placeholder="User Name">
   </div>
      <div class="field">
     <label>ایمیل</label>
@@ -29,16 +29,17 @@
     <label>تکرار گذرواژه </label>
     <input id="id_password2" type="password" name="password2" placeholder="Password2">
   </div>
-  <div class="field">
-    <div class="ui checkbox">
-      <input type="checkbox" tabindex="0" class="hidden">
-      <label>I agree to the Terms and Conditions</label>
-    </div>
-  </div>
+{#  <div class="field">#}
+{#    <div class="ui checkbox">#}
+{#      <input type="checkbox" tabindex="0" class="hidden">#}
+{#      <label>I agree to the Terms and Conditions</label>#}
+{#    </div>#}
+{#  </div>#}
   <button id="id_submit" class="ui button" type="submit">Submit</button>
 </form>
 
 {% endblock %}
+
 
 
 {#{% extends 'base.html' %}#}
@@ -62,3 +63,35 @@
 {#    <button type="submit">Sign up</button>#}
 {#  </form>#}
 {#{% endblock %}#}
+
+{#{% extends "base.html" %}#}
+{#{% block link %}#}
+{#{% load staticfiles %}#}
+{#    <link rel="stylesheet" type="text/css" href="{% static "signupstyle.css" %}"/>#}
+{#{% endblock %}#}
+
+
+
+{#{% extends 'base.html' %}#}
+{##}
+{#{% block content %}#}
+{#  <h2>Sign up</h2>#}
+{#  <form method="post">#}
+{#    {% csrf_token %}#}
+{#    {% for field in form %}#}
+{#      <p>#}
+{#        {{ field.label_tag }}<br>#}
+{#        {{ field }}#}
+{#        {% if field.help_text %}#}
+{#          <small style="color: grey">{{ field.help_text }}</small>#}
+{#        {% endif %}#}
+{#        {% for error in field.errors %}#}
+{#          <p style="color: red">{{ error }}</p>#}
+{#        {% endfor %}#}
+{#      </p>#}
+{#    {% endfor %}#}
+{#    <button type="submit">Sign up</button>#}
+{#  </form>#}
+{#{% endblock %}#}
+
+
