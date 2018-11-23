@@ -1,4 +1,6 @@
+from django.conf import settings
 from django.contrib.auth.models import User
+from django.core.mail import send_mail
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
@@ -24,6 +26,9 @@ from forms.user_forms import SignUpForm
 
 from django.contrib.auth.models import User
 
+
+
+
 def index(request):
     return render(request,"index.html")
 
@@ -38,11 +43,18 @@ def index(request):
 #     else:
 #         # Return an 'invalid login' error message.
 def contact_us(request):
+    correct=False
     if request.POST:
         title=request.POST.get("title")
         email=request.POST.get("email")
         text=request.POST.get("text")
-    return render(request,"contact_us.html")
+
+        send_mail(title,text,email,['ostadju@fastmail.com'])
+
+        correct=True
+    return render(request,"contact_us.html",{
+        "correct":correct
+    })
 
 def sign_in(request):
     if request.POST:
@@ -129,3 +141,23 @@ def sign_up(request):
 
 def logout_view(request):
     logout(request)
+    return HttpResponseRedirect('/')
+
+def profile(request):
+
+    return render(request,"prof.html")
+def edit(request):
+    if request.POST:
+        name = request.POST.get("firstname")
+        lastname = request.POST.get("lastname")
+        gender=request.POST.get("gender")
+        bio=request.POST.get("bio")
+        request.user.first_name=name
+        request.user.last_name=lastname
+
+        request.user.save()
+        return HttpResponseRedirect('/profile')
+    return render(request,"edit.html")
+def remove(request):
+    User.objects.get(username=request.user).delete()
+    return HttpResponseRedirect('/logout')

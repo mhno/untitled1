@@ -1,0 +1,29 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+<form class="ui form" method="post">
+{% csrf_token %}
+     <div class="field">
+    <label>نام </label>
+    <input id="id_first_name" type="text" name="firstname">
+  </div>
+     <div class="field">
+    <label>نام خانوادگی</label>
+    <input id="id_last_name" type="text" name="lastname">
+  </div>
+  <div class="field">
+      <label>جنسیت</label>
+      <select id="id_gender" name="gender">
+  <option value="M">مرد</option>
+  <option value="F">زن</option>
+</select>
+  </div>
+     <div>
+      <label>زندگینامه</label>
+      <input id="id_bio"و type="text" name="bio">
+  </div>
+  <button id="id_submit" class="ui button" type="submit">Submit</button>
+</form>
+{% endblock %}
+

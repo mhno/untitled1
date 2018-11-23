@@ -24,7 +24,11 @@ urlpatterns = [
     path('',views.index),
     path('signup2/',views.sign_up),
     path('login/',views.sign_in),
-    #path('contact_us/',views.contact_us)
+    path('contact_us/',views.contact_us),
+    path('logout/',views.logout_view),
+    path('profile/',views.profile),
+    path('edit/',views.edit),
+    path('remove/',views.remove)
     #url(r'^signup/$', core_views.signup, name='signup'),
 ]
 

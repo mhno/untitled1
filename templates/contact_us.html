@@ -1,20 +1,16 @@
 {% extends 'base.html' %}
 
 
-{#{% block nav %}#}
-{#  <div>#}
-{#  <h1 align="center">سلام. به سامانه استادجو خوش آمدید. </h1>#}
-{#  </div>#}
-{##}
-{#{% endblock %}#}
-
-
 {% block content %}
-    <form class="ui form" autocomplete="off" method="post" action="/">
+    <form class="ui form" method="post">
+    {% csrf_token %}
+    {% if correct %}
+        <h1>درخواست شما ثبت شد</h1>
+    {% endif %}
   <div class="ui form">
    <div class="field">
     <label>عنوان </label>
-    <input id="id_title" type="text" name="title" placeholder="First Name">
+    <input id="id_title" type="text" name="title" placeholder="First Name" required>
   </div>
   <div class="field">
     <label>ایمیل</label>
@@ -22,7 +18,7 @@
   </div>
   <div class="field">
     <label>متن </label>
-      <input id="id_text" type="text" name="text" placeholder="Last Name">
+      <input id="id_text" type="text" name="text" placeholder="Last Name" maxlength="250" minlength="10" required>
   </div>
 </div>
     <button id="id_submit" class="ui button" type="submit">Submit</button>

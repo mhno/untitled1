@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{#{% block editt %}#}
+{#    {% csrf_token %}#}
+{#    <a href="/edit" id="id_edit_profile" class="item">ویرایش</a>#}
+{#{% endblock %}#}
+{% block content %}
+    <a href="/edit" id="id_edit_profile" class="item">ویرایش</a>
+
+
+<form class="ui form" method="post">
+{% csrf_token %}
+     <div class="field">
+    <label>نام</label>
+         <h1 id="id_first_name">{{ request.user.first_name }}</h1>
+  </div>
+     <div class="field">
+    <label>نام خانوادگی</label>
+   <h1 id="id_last_name">{{ request.user.last_name }}
+   </h1></div>
+  <div class="field">
+    <label>نام کاربری</label>
+      <h1 id="id_username">{{ request.user.username }}</h1>
+  </div>
+
+   <a href="/remove" id="id_remove_user" class="item">حدف کاربر</a>
+
+
+</form>
+
+
+{% endblock %}
+
