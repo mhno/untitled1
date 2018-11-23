@@ -26,6 +26,7 @@ SECRET_KEY = 'h_+9t#p4@_1zkn9ep27f!3&@=2xfx@7wt5@x!aoh4#fj2*&@q3'
 DEBUG = True
 
 ALLOWED_HOSTS = [
+    '192.168.201.23',
     '192.168.198.23',
     '127.0.0.1',
     '0.0.0.0',
@@ -110,7 +111,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
 
-LANGUAGE_CODE = 'fa-IR'
+LANGUAGE_CODE = 'en-US'
 
 TIME_ZONE = 'UTC'
 

@@ -56,15 +56,18 @@ def sign_in(request):
                 return HttpResponseRedirect("/")
             else:
                 error = True
-        return render(request, "sign_in.html", {
+        else:
+            error=True
+        return render(request,"sign_in.html", {
             "error": error
         })
 
-   # return render(request,"sign_in.html")
+    return render(request,"sign_in.html")
 def sign_up(request):
     # if request.method == 'POST':
     #     error = False
         if request.POST:
+            print(1)
             name=request.POST.get("name")
             lastname=request.POST.get("last_name")
             username = request.POST.get("username")
@@ -77,6 +80,8 @@ def sign_up(request):
             user.first_name = name
             user.last_name = lastname
             user.save()
+
+            return HttpResponseRedirect("/")
 
         return render(request,"sign_up.html")
            # user = authenticate(request, username=username, password=password)
