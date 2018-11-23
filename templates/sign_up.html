@@ -4,6 +4,15 @@
 {% block content %}
 
 <form class="ui form" autocomplete="off" method="post">
+{% if error1 %}
+    <p>گذرواژه و تکرار گذرواژه یکسان نیستند</p>
+{% endif %}
+{% if error2 %}
+    <p>کاربری با ایمیل وارد شده وجود دارد</p>
+{% endif %}
+{% if error3 %}
+    <p>کاربری با نام کاربری وارد شده وجود دارد</p>
+{% endif %}
 {% csrf_token %}
   <div class="field">
     <label>نام </label>
